@@ -29,6 +29,25 @@ python app.py
 
 The server will start at `http://localhost:5001`
 
+## Deployment to Render
+
+1. **Create a Render Account**
+   - Sign up at [render.com](https://render.com)
+
+2. **Deploy the Application**
+   - Create a new Web Service
+   - Connect your GitHub repository
+   - Use the following settings:
+     - Build Command: `pip install -r requirements.txt`
+     - Start Command: `gunicorn app:app`
+   - Add environment variables:
+     - `MONGO_URI`: Your MongoDB Atlas connection string
+     - `SECRET_KEY`: Your secret key
+
+3. **Automatic Deployments**
+   - Render will automatically deploy when you push to your main branch
+   - You can also manually deploy from the Render dashboard
+
 ## API Documentation
 
 Swagger documentation is available at: `http://localhost:5001/api/docs`
@@ -65,4 +84,5 @@ Swagger documentation is available at: `http://localhost:5001/api/docs`
 - User login with credential verification
 - Swagger UI documentation
 - **MongoDB Atlas** cloud database for user storage
-- Environment variable configuration for sensitive data 
+- Environment variable configuration for sensitive data
+- Production-ready with Gunicorn 
